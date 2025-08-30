@@ -1,0 +1,12 @@
+.header{
+    height: 175px;
+    width: 100%;
+    background-image: url('../src/bg.png');
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: white;
+}
