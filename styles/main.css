@@ -1,4 +1,55 @@
+/* Uilizo este main.css para elementos que se aplicarán a tooooodas las páginas, el home y los otros módulos serán para cada página o elementos, depende de las prisas xd */
+
+/* Pa jalar una fuente acá bien locota */
+.spectral-sc-light {
+  font-family: "Spectral SC", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.spectral-sc-regular {
+  font-family: "Spectral SC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.spectral-sc-bold {
+  font-family: "Spectral SC", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.spectral-sc-light-italic {
+  font-family: "Spectral SC", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.spectral-sc-regular-italic {
+  font-family: "Spectral SC", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.spectral-sc-bold-italic {
+  font-family: "Spectral SC", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* root hace referencia al mismo HTML, sirve pa declarar variables globales y así */
+:root{
+    --fondo: rgb(230,230,230);
+}
+
 body{
+    background-color: var(--fondo);
     margin: 0px;
     padding: 0px;
+    font-family: "Spectral SC";
+}
+
+a{
+  color: black;
+  text-decoration: none;
 }

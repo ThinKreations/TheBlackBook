@@ -1,12 +1,35 @@
 .header{
-    height: 175px;
-    width: 100%;
-    background-image: url('../src/bg.png');
-    background-attachment: fixed;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+    justify-content: space-between;
     align-items: center;
-    color: white;
+}
+
+#btnLogIn{
+    padding: 5px;
+    height: fit-content;
+    outline: none;
+    margin-right: 40px;
+    letter-spacing: 5px;
+    font-size: 16px;
+    font-family: Spectral SC, "Arial", sans-serif;
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
+#btnLogIn:hover{
+        border: 1px solid rgb(150,150,150);
+}
+
+.menu{
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+.menu a{
+    border-bottom: 1px solid rgb(200,200,200);
+    width: 25%;
+}
+.menu a:hover{
+    background-color: rgb(200, 200, 200);
+    border-bottom: 1px solid rgb(150,150,150);
 }
