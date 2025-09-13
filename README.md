@@ -5,7 +5,7 @@ Este proyecto es presentado por:
 - Colín Santillán Alejandro
 - Hernández Pascua Brandon
 - Nápoles Munguía José de Jesús
-- Josué xd
+- Segundo Vargas Josué Armando
 
 ### Objetivos del proyecto:
 
