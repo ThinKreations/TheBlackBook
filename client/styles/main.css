@@ -39,7 +39,7 @@
 
 /* root hace referencia al mismo HTML, sirve pa declarar variables globales y así */
 :root{
-    --fondo: rgb(230,230,230);
+    --fondo: rgb(250,250,250);
 }
 
 body{
