@@ -1,7 +1,7 @@
 //Chavos, aquí estoy manejando "Web components", básicamente son componentes personalizados reutilizables en las demás páginas
 // de modo que, en lugar de poner todo el HTML, sólo jalan el script y ponen las etiquetas HTML personalizadas
 
-let isLogged = false;
+let isLogged = true; //este luego lo hacemos dinamico
 
 class AppHeader extends HTMLElement {
   constructor(){
@@ -70,7 +70,6 @@ class MainApp extends HTMLElement {
       </div>
     `;
 
-    // Eventos (ejemplo básico de login/logout simulado)
     if (!isLogged) {
       const btn = this.querySelector(".logButton");
       btn?.addEventListener("click", () => {
