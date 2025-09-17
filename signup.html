@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="black">
+    <link href="app/styles/main.css" rel="stylesheet">
+    <link href="app/styles/home-module.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Spectral+SC:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Registrate</title>
+</head>
+<body class="bgBody">
+    <index-header src="app/src/tbb.png" height="100px"></index-header>
+    <div class="mainContainer">
+        <form class="formLogin">
+            <h2 style="margin:0">Únete a Black Book, la biblioteca del futuro.</h2>
+            <div class="innerForm">
+                <input class="inputLogin" id="nombre" type="text" placeholder="Nombre(s)*" required>
+                <input class="inputLogin" id="apellidoP" type="text" placeholder="Ap. Paterno*" required>
+                <input class="inputLogin" id="apellidoM" type="text" placeholder="Ap. Materno">
+            </div>
+            <div class="innerForm">
+                <input class="inputLogin" id="correo" type="text" placeholder="Correo Electrónico*">
+                <input class="inputLogin" id="celular" type="text" placeholder="Celular">
+            </div>
+            <div class="innerForm">
+                <input class="inputLogin" id="calle" type="text" placeholder="Calle">
+                <input class="inputLogin" id="num_ext" type="text" placeholder="# Exterior">
+            </div>
+            <div class="innerForm">
+                <input class="inputLogin" id="colonia" type="text" placeholder="Colonia">
+                <input class="inputLogin" id="alcaldia" type="text" placeholder="Alcaldía">
+            </div>
+            <div class="innerForm">
+                <input class="inputLogin" id="cp" type="text" placeholder="C.P.">
+                <input class="inputLogin" id="sexo" type="text" placeholder="Sexo">
+            </div>
+            <center>
+            <button type="submit" class="logButton">Registrar</button>
+            <a href="/"><p>< Volver</b></p></a>
+            </center>            
+      </form>
+    </div>
+    <script src="app/js/web-components.js" defer></script>
+</body>
+</html>

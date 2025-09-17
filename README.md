@@ -7,8 +7,6 @@ Este proyecto es presentado por:
 - Nápoles Munguía José de Jesús
 - Segundo Vargas Josué Armando
 
-### Objetivos del proyecto:
-
 ## TODO
 - Manual Técnico
 - Manual de Identidad
@@ -16,3 +14,15 @@ Este proyecto es presentado por:
 - Reporte de proyecto
 - Reporte de evidencia
 - Front y back xd
+
+## Arquitectura del proyecto
+Este proyecto es un Monolito con REST interno, es decir, todo está en un sólo servidor pero el back ofrece una API para que el front reciba datos dinámicos y actualice la interfaz sin recargar la página.
+
+## Tecnologías
+- **Python (Vanilla)**: Backend
+    - "http.server": para levantar el servidor y manejar rutas
+    - Luego defino lo demás xd
+- **HTML, CSS y JS**: Frontend
+    - "Web-Components": Componentes modulares reutilziables con JS
+    - "Fetch": Realizar peticiones hacia el back
+- **SQL Server**: Database
