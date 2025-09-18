@@ -1,0 +1,243 @@
+.menu{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid rgb(110,110,110);
+    width: 200px;
+    min-width: max-content;
+    height: calc(100vh - 128px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+.menu-btnr{
+    display: flex;
+    flex-direction: column;
+}
+.menu-btnr a{
+    margin: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    
+}
+.menu-btnr a:hover{
+    background-color: rgb(190,190,190);
+    color: var(--vino);
+}
+.active{
+    color: var(--vino);
+}
+
+.container{
+    padding: 20px;
+    background-color: rgb(165,165,165);
+    width: 100vw;
+    min-height: calc(100vh - 148px);
+    max-height: calc(100vh - 148px);
+    border: none;
+    border-top: 1px solid rgb(110,110,110);
+    border-left: 1px solid rgb(110,110,110);
+    overflow-y: scroll;
+}
+.container::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+.container::-webkit-scrollbar:vertical {
+    width:10px;
+}
+.container::-webkit-scrollbar-button:increment,.container::-webkit-scrollbar-button {
+    display: none;
+} 
+.container::-webkit-scrollbar-thumb {
+    background-color: rgba(50, 50, 50, 0.4);
+    border: 2px solid rgb(165,165,165);
+}
+.container::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.searchTop{
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchIn{
+    width: 200px;
+    outline: none;
+    font-family: Consolas;
+    padding: 5px;
+    border: 1px solid rgb(100,100,100);
+    background-color: transparent;
+    border-radius: 7px 0px 0px 7px;
+    color: var(--vino);
+    font-weight: bold;
+}
+.searchIn:hover::placeholder{
+    color: var(--vino);
+}
+.searchIn:hover{
+    border: 1px solid var(--vino);
+}
+#searchBtn{
+    outline: none;
+    font-family: Consolas;
+    background-color: transparent;
+    border: 1px solid var(--vino);
+    border-radius: 0px 7px 7px 0px;
+    width: 28px;
+    font-weight: bolder;
+    padding: 5px;
+    color: var(--vino);
+}
+#searchBtn:hover{
+    color: white;
+    background-color: var(--vino);
+}
+
+.catalog{
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.card{
+    width: 33vw;
+    min-width: 350px;
+    border: 1px solid transparent;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+    margin-left: 0px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid rgb(140,140,140);
+    background-color: rgb(200,200,200);
+    font-family: Montserrat, Spectra SC, Arial, Helvetica, sans-serif;
+    
+}
+.card:hover{
+    background-color: rgb(210,210,210);
+}
+.data{
+    width: 58%;
+    max-width: 68%;
+    padding: 10px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    word-wrap: break-word;
+}
+
+.portada-wrapper{
+    min-width: fit-content;
+    height: 180px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+#portada{
+    height: 180px;
+    transition:0.12s ease-in-out;
+    object-fit: cover;
+}
+.card:hover #portada{
+    transform: scale(1.1);
+    overflow: hidden;
+}
+#titulo{
+    font-weight: bold;
+    color: var(--vino);
+}
+#categoria, #editorial, #anio{
+    color: rgb(80,80,80);
+}
+
+.libroBtnContainer{
+    display: flex;
+    flex-direction: column;
+}
+.libroBtn{
+    color: var(--vino);
+    margin-bottom: 5px;
+    border: 0px;
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+    border-radius: 25px;
+}
+.libroBtn:hover{
+    background-color: rgb(195,195,195);
+}
+
+.libroBtn:hover + .labelOculto{
+    display: block;
+}
+.labelOculto{
+    font-size: 12px;
+    background-color: rgb(200,200,200);
+    display: none;
+    position: absolute;
+    padding: 5px 10px;
+    z-index: 10;
+    top: 125px;
+    left: 50vw;
+    color: rgb(50,50,50);
+    border: 1px solid rgb(80,80,80);
+    box-shadow: 0px 0px 10px rgb(140,140,140);
+}
+.menu-toggle{
+    display: none;
+}
+@media (max-width: 600px){
+    .menu{
+        height: calc(100vh - 80px);
+        padding-top: 50px;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        background: black;
+        transition: left 0.2s ease-in-out;
+        box-shadow: 0px 0px 50px rgb(0,0,0);
+        z-index: 1000;
+    }
+    .menu.show{
+        left: 0;
+    }
+    .menu-toggle{
+        display: block;
+        position: fixed;
+        top: 35px;
+        right: 35px;
+        z-index: 1100;
+        cursor: pointer;
+        background: var(--vino);
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px rgb(120,120,120);
+    }
+    .menu-btnr a{
+        margin-bottom: 5vh;
+        color: white;
+    }
+    
+    .container{
+        padding-left: 10px;
+        height: calc(100vh - 78px);
+    }
+
+    .searchIn{
+        width: 150px;
+    }
+    #searchBtn{
+        padding: 4px;
+    }
+    .labelOculto{
+        left: 130px;
+        top: 129px;
+    }
+    .data{
+        width: 57%;
+    }
+}
+

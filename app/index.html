@@ -6,27 +6,51 @@
     <meta name="theme-color" content="black">
     <link href="./styles/main.css" rel="stylesheet">
     <link href="./styles/home-module.css" rel="stylesheet">
-    <link href="./styles/card-module.css" rel="stylesheet">
+    <link href="./styles/app-module.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Spectral+SC:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Spectral+SC:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <title>The Black Book</title>
 </head>
 <body>
-    <header class="header" style="background-image: linear-gradient(to top, rgba(200,200,200,0.8) 0%, rgba(175,175,175,0.95) 100%) ,url('./src/bg2.jpg');">
+    <header class="header" style="background-image: linear-gradient(to top, rgba(135,135,135,0.8) 0%, rgba(105,105,105,0.95) 100%) ,url('./src/bg2.jpg');">
         <a href="/app/"><img src="./src/tbb.png" height="100px"></a>
+        <br/>
+        <button class="menu-toggle">☰</button>
     </header>
     <div class="mainContainer" style="padding-bottom: 0px;">
         <app-menu></app-menu>
         <div class="container">
-            <form class="searchTop">
-                <input type="text" placeholder="Libro, Autor, Categoría" id="searchIn">
-                <button type="button" id="searchBtn"><span> → </span></button>
-            </form>
+            <div class="searchTop">
+                <div>
+                    <input type="text" placeholder="Libro, Autor, Categoría" class="searchIn">
+                    <button type="button" id="searchBtn"><span> → </span></button>
+                </div>
+                <select class="searchIn" style="border-radius: 0px; width:100px; ">
+                    <option hidden>Ordenar</option>
+                    <option>A - Z</option>
+                    <option>Z - A</option>
+                </select>
+            </div>
             <div class="catalog">
-                <div class="card">
-
+                <div class="card" id="libro">
+                    <div class="portada-wrapper">
+                        <img src="https://images.cdn3.buscalibre.com/fit-in/360x360/02/f8/02f854af215ad50b3d5c07105049e04e.jpg" id="portada" class="portada">
+                    </div>
+                    <div class="data" id="libro-data">
+                        <span style="font-size: 35px;" id="titulo">Misery</span>
+                        <span id="autor"><b>Stephen King</b></span>
+                        <span id="anio">1987</span>
+                        <span id="editorial">Doubleday</span>
+                        <span id="categoria">Horror, suspenso</span>
+                    </div>
+                    <div class="libroBtnContainer">
+                        <button class="libroBtn"><span class="material-icons">add </span></button>
+                        <div class="labelOculto">Solicitar Préstamo</div>
+                        <button class="libroBtn"><span class="material-icons">list </span></button>
+                        <div class="labelOculto">Agregar a tu lista</div>
+                    </div>
                 </div>
             </div>
         </div>

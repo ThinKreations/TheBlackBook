@@ -27,9 +27,10 @@ class appMenu extends HTMLElement{
               <a href="/app/index.html">- Inicio -</a>
               <a href="/app/prestamos.html">- Prestamos -</a>
               <a href="/app/multas.html">- Multas -</a>
-              <a href="/app/wishlist.html">- Lista -</a>
+              <a href="/app/wishlist.html">- Deseos -</a>
           </div>
           <div class="menu-btnr">
+              <a>Privacidad</a>
               <a>Contacto</a>
               <a style="color: var(--vino);" href="/">Cerrar sesión</a>
           </div>
@@ -45,4 +46,13 @@ class appMenu extends HTMLElement{
 }
 customElements.define("app-menu", appMenu);
 
-
+document.addEventListener("DOMContentLoaded", ()=>{
+  const toggleBtn = document.querySelector(".menu-toggle");
+  const menu = document.querySelector("app-menu .menu");
+  if (toggleBtn && menu){
+    toggleBtn.addEventListener("click", (e)=>{
+      e.preventDefault();
+      menu.classList.toggle("show");
+    });
+  }
+});

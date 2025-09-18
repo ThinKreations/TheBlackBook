@@ -37,6 +37,12 @@
   font-style: italic;
 }
 
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 /* root hace referencia al mismo HTML, sirve pa declarar variables globales y así */
 :root{
     --fondo: rgb(200,200,200);
