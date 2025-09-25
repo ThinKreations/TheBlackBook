@@ -8,9 +8,10 @@ class IndexHeader extends HTMLElement {
     super();
     const src = this.getAttribute('src');
     const height=this.getAttribute('height')
+    const link = this.getAttribute('link') || '';
     this.innerHTML = `
       <header class="header">
-        <a href="/app/"><img src="${src}" height="${height}"></a>
+        <a href="${link}"><img src="${src}" height="${height}"></a>
       </header>
     `;
   }
@@ -24,15 +25,15 @@ class appMenu extends HTMLElement{
     this.innerHTML=`
       <div class="menu">
           <div class="menu-btnr">
-              <a href="/app/index.html">- Inicio -</a>
-              <a href="/app/prestamos.html">- Prestamos -</a>
-              <a href="/app/multas.html">- Multas -</a>
-              <a href="/app/wishlist.html">- Deseos -</a>
+              <a href="buscador.html">- Inicio -</a>
+              <a href="prestamos.html">- Prestamos -</a>
+              <a href="multas.html">- Multas -</a>
+              <a href="wishlist.html">- Deseos -</a>
           </div>
           <div class="menu-btnr">
               <a>Privacidad</a>
               <a>Contacto</a>
-              <a style="color: var(--vino);" href="/">Cerrar sesión</a>
+              <a style="color: var(--vino);" href="index.html">Cerrar sesión</a>
           </div>
       </div>
   `;
@@ -45,6 +46,20 @@ class appMenu extends HTMLElement{
   }
 }
 customElements.define("app-menu", appMenu);
+
+
+class appHeader extends HTMLElement{
+  constructor(){
+    super();
+    this.innerHTML=`
+    <header class="header" style="background-image: linear-gradient(to top, rgba(135,135,135,0.8) 0%, rgba(105,105,105,0.95) 100%) ,url('./src/bg2.jpg');">
+        <a href="/app/"><img src="./src/tbb.png" height="100px"></a>
+        <button class="menu-toggle">☰</button>
+    </header>
+    `; 
+  }
+}
+customElements.define("app-header",appHeader)
 
 document.addEventListener("DOMContentLoaded", ()=>{
   const toggleBtn = document.querySelector(".menu-toggle");

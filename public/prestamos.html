@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="black">
+    <link href="./styles/main.css" rel="stylesheet">
+    <link href="./styles/home-module.css" rel="stylesheet">
+    <link href="./styles/app-module.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Spectral+SC:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Prestamos</title>
+</head>
+<body>
+    <app-header></app-header>
+    <div class="mainContainer" style="padding-bottom: 0px;">
+        <app-menu></app-menu>
+        <div class="container">
+            <div class="container1">
+                <div class="prestamosContainer">
+                    <h3 style="margin-top: 0px; color: var(--vino)">Tus prestamos</h3>
+                    <table class="prestamosTable">
+                        <tr>
+                            <th style="width: 40%;">Libro</th>
+                            <th>F. Prestamo</th>
+                            <th>F. Límite</th>
+                            <th>F. Entrega</th>
+                        </tr>
+                        <tr id="prestamo">
+                            <td><span><a id="">Misery</a></span></td>
+                            <td style="text-align: center;"><span>18/09/25</span></td>
+                            <td style="text-align: center;"><span>18/11/25</span></td>
+                            <td style="text-align: center;"><span>-</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/web-components.js" defer></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 .menu{
     padding-top: 10px;
     padding-bottom: 10px;
-    border-top: 1px solid rgb(110,110,110);
+    border-top: 1px solid rgb(100,100,100);
     width: 200px;
     min-width: max-content;
     height: calc(100vh - 128px);
@@ -27,7 +27,7 @@
 .active{
     color: var(--vino);
 }
-
+/* Inicio */
 .container{
     padding: 20px;
     background-color: rgb(165,165,165);
@@ -35,8 +35,8 @@
     min-height: calc(100vh - 148px);
     max-height: calc(100vh - 148px);
     border: none;
-    border-top: 1px solid rgb(110,110,110);
-    border-left: 1px solid rgb(110,110,110);
+    border-top: 1px solid rgb(100,100,100);
+    border-left: 1px solid rgb(100,100,100);
     overflow-y: scroll;
 }
 .container::-webkit-scrollbar {
@@ -184,10 +184,43 @@
     border: 1px solid rgb(80,80,80);
     box-shadow: 0px 0px 10px rgb(140,140,140);
 }
+
+/* Prestamos */
+.container1{
+    display:flex;
+    justify-content: space-between;
+}
+.prestamosContainer{
+    border-right: 1px solid rgb(120,120,120);
+    height: 75vh;
+}
+.prestamosTable{
+    font-family: consolas, Arial, Helvetica, sans-serif;
+    width: 50vw;
+    border-collapse: collapse;
+}
+.prestamosTable th{
+    font-family: Consolas;
+    font-weight: lighter;
+    color: var(--vino);
+    padding-bottom: 10px;
+}
+.prestamosTable tr:hover td{
+    background-color: rgb(150,150,150);
+}
+.prestamosTable td{
+    height: 20px;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    padding-left: 5px;
+    text-wrap: wrap; 
+    word-break: break-word;
+}
+
 .menu-toggle{
     display: none;
 }
-@media (max-width: 600px){
+@media (max-width: 675px){
     .menu{
         height: calc(100vh - 80px);
         padding-top: 50px;
@@ -222,7 +255,8 @@
     }
     
     .container{
-        padding-left: 10px;
+        padding-left: 15px;
+        padding-right: 0px;
         height: calc(100vh - 78px);
     }
 
