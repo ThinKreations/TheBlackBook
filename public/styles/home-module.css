@@ -1,5 +1,5 @@
 .bgBody{
-    background-image: linear-gradient(to bottom, rgba(180,180,180,1) 30%, rgba(155,155,155,0.95) 100%) ,url('../src/bg2.jpg');
+    background-image: linear-gradient(to bottom, rgba(220,220,220,0.5) 30%, rgba(189,189,189,0.6) 100%) ,url('../src/bg2.jpg');
     background-attachment: fixed;
 }
 

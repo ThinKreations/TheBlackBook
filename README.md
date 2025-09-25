@@ -20,7 +20,8 @@ Este proyecto es un Monolito con REST interno, es decir, todo está en un sólo 
 
 ## Tecnologías
 - **Python (Vanilla)**: Backend
-    - "http.server": para levantar el servidor y manejar rutas
+    - "http.server": para levantar el servidor y manejar rutas (ESTE YA VIENE INSTALADO)
+    - pyodbc 5.2.0  (pip install en la raíz del proyecto)
     - Luego defino lo demás xd
 - **HTML, CSS y JS**: Frontend
     - "Web-Components": Componentes modulares reutilziables con JS

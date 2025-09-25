@@ -61,6 +61,43 @@ class appHeader extends HTMLElement{
 }
 customElements.define("app-header",appHeader)
 
+class BookCard extends HTMLElement{
+  constructor(){
+    super();
+  }
+  connectedCallback(){ // Esto es, en resumen, pa q funcione dinámicamente
+    const titulo = this.getAttribute("titulo") || "Título desconocido";
+    const autor = this.getAttribute("autor") || "Autor desconocido";
+    const anio = this.getAttribute("anio") || "-";
+    const editorial = this.getAttribute("editorial") || "-";
+    const categoria = this.getAttribute("categoria") || "-";
+    const portada = this.getAttribute("portada") || "";
+
+    this.shadowRoot.innerHTML = `
+      <div class="card">
+        <div class="portada-wrapper">
+          <img src="${portada}" class="portada">
+        </div>
+        <div class="data">
+          <span style="font-size: 18px;"><b>${titulo}</b></span>
+          <span>${autor}</span>
+          <span>${anio}</span>
+          <span>${editorial}</span>
+          <span>${categoria}</span>
+        </div>
+        <div class="libroBtnContainer">
+          <button class="libroBtn"><span class="material-icons">add</span></button>
+          <div class="labelOculto">Solicitar Préstamo</div>
+          <button class="libroBtn"><span class="material-icons">list</span></button>
+          <div class="labelOculto">Agregar a tu lista</div>
+        </div>
+      </div>
+    `;
+  }
+}
+customElements.define("book-card", BookCard);
+
+
 document.addEventListener("DOMContentLoaded", ()=>{
   const toggleBtn = document.querySelector(".menu-toggle");
   const menu = document.querySelector("app-menu .menu");
