@@ -15,36 +15,60 @@
 <body class="bgBody">
     <index-header src="src/tbb.png" height="100px" link="index.html"></index-header>
     <div class="mainContainer">
-        <form class="formLogin">
+        <form class="formLogin" id="formRegistro">
             <h2 style="margin:0">Únete a Black Book, la biblioteca del futuro.</h2>
             <div class="innerForm">
-                <input class="inputLogin" id="nombre" type="text" placeholder="Nombre(s)*" required>
-                <input class="inputLogin" id="apellidoP" type="text" placeholder="Ap. Paterno*" required>
-                <input class="inputLogin" id="apellidoM" type="text" placeholder="Ap. Materno">
+                <input class="inputLogin" id="nombre" type="text" placeholder="Nombre(s)" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}">
+                <input class="inputLogin" id="apellidoP" type="text" placeholder="Ap. Paterno" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}">
+                <input class="inputLogin" id="apellidoM" type="text" placeholder="Ap. Materno (Opc.)" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}">
             </div>
             <div class="innerForm">
-                <input class="inputLogin" id="correo" type="text" placeholder="Correo Electrónico*">
-                <input class="inputLogin" id="celular" type="text" placeholder="Celular">
+                <input class="inputLogin" id="correo" type="email" placeholder="Correo Electrónico*" required>
+                <input class="inputLogin" id="celular" type="tel" placeholder="Celular (10 dígitos)" required pattern="[0-9]{10}">
             </div>
             <div class="innerForm">
-                <input class="inputLogin" id="calle" type="text" placeholder="Calle">
-                <input class="inputLogin" id="num_ext" type="text" placeholder="# Exterior">
+                <input class="inputLogin" id="calle" type="text" placeholder="Calle" required>
+                <input class="inputLogin" id="num_ext" type="text" placeholder="# Exterior" pattern="[0-9]+" required>
             </div>
             <div class="innerForm">
-                <input class="inputLogin" id="colonia" type="text" placeholder="Colonia">
-                <input class="inputLogin" id="alcaldia" type="text" placeholder="Alcaldía">
+                <input class="inputLogin" id="colonia" type="text" placeholder="Colonia" required>
+                <input class="inputLogin" id="alcaldia" type="text" placeholder="Alcaldía" required>
             </div>
             <div class="innerForm">
-                <input class="inputLogin" id="cp" type="text" placeholder="C.P.">
-                <input class="inputLogin" id="sexo" type="text" placeholder="Sexo">
+                <input class="inputLogin" id="cp" type="text" placeholder="C.P." pattern="[0-9]{5}" required>
+                <select class="inputLogin" id="sexo">
+                    <option value="">Selecciona sexo</option>
+                    <option value="m">Masculino</option>
+                    <option value="f">Femenino</option>
+                </select>
             </div>
-            <span>* Obligatorios</span>
+            <span>Datos Obligatorios</span>
             <center>
-            <button type="submit" class="logButton">Registrar</button>
-            <a href="index.html"><p>< Volver</b></p></a>
-            </center>            
-      </form>
+                <button type="submit" class="logButton">Registrar</button>
+                <a href="index.html"><p>< Volver</p></a>
+            </center>
+        </form>
     </div>
     <script src="js/web-components.js" defer></script>
+    <script>
+    document.getElementById("formRegistro").addEventListener("submit", function(e) {
+        const correo = document.getElementById("correo");
+        const celular = document.getElementById("celular");
+        const cp = document.getElementById("cp");
+
+        if (!correo.checkValidity()) {
+            alert("Ingresa un correo válido.");
+            e.preventDefault();
+        }
+        if (celular.value && !/^[0-9]{10}$/.test(celular.value)) {
+            alert("El celular debe tener 10 dígitos.");
+            e.preventDefault();
+        }
+        if (cp.value && !/^[0-9]{5}$/.test(cp.value)) {
+            alert("El C.P. debe tener 5 dígitos.");
+            e.preventDefault();
+        }
+    });
+    </script>
 </body>
 </html>

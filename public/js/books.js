@@ -1,6 +1,6 @@
 export async function getAllBooks(){
     try{
-        const response = await fetch("http://localhost:8000/books");
+        const response = await fetch("http://localhost:8080/books");
         if (!response.ok) 
             throw new Error("Error en la respuesta del servidor");
         const data = await response.json();
@@ -9,4 +9,32 @@ export async function getAllBooks(){
         console.error("Error al obtener libros:", err);
         return [];
     }
+}
+
+export function renderBooks(libros){
+    const catalogo = document.querySelector(".catalog");
+    if (!catalogo) return;
+    catalogo.innerHTML = "";
+    libros.forEach(libro => {
+        console.log(libro)
+        const card = document.createElement("book-card");
+        card.setAttribute("id", libro.id);
+        card.setAttribute("titulo", libro.titulo);
+        card.setAttribute("autor", libro.autor);
+        card.setAttribute("anio", libro.anio);
+        card.setAttribute("editorial", libro.editorial);
+        card.setAttribute("categoria", libro.categoria);
+        card.setAttribute("portada", libro.portada);
+        catalogo.appendChild(card);
+    });
+}
+
+export function filterBooks(libros,query){
+    query=query.toLowerCase();
+    return libros.filter(libro=>
+        libro.titulo.toLowerCase().includes(query)||
+        libro.autor.toLowerCase().includes(query)||
+        libro.editorial.toLowerCase().includes(query)||
+        libro.categoria.toLowerCase().includes(query)
+    );
 }

@@ -1,0 +1,102 @@
+.mainContainer {
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container1 {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.prestamosTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Spectral SC", serif;
+}
+
+.prestamosTable th, 
+.prestamosTable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.prestamosTable th {
+    background-color: var(--vino);
+    color: white;
+}
+
+.calendarContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendarHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    gap:10px;
+}
+
+.calendarHeader button {
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#monthYear {
+    font-size: bold;
+}
+
+.calendar {
+    border-collapse: collapse;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    font-family: "Spectral SC", serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.calendar th, 
+.calendar td {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 10px;
+    width: 14.28%;
+    height: 60px;
+}
+
+.calendar th {
+    background-color: var(--vino);
+    color: white;
+    font-weight: bold;
+}
+
+.calendar td {
+    background-color: white;
+}
+
+.prestamo {
+    background-color: lightgreen;
+}
+
+.devolucion {
+    background-color: lightcoral;
+}
+
+.multa {
+    background-color: khaki;
+}
+
+:root {
+    --fondo: rgb(200,200,200);
+    --vino: rgb(125,50,50);
+}

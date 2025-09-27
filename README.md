@@ -5,6 +5,7 @@ Este proyecto es presentado por:
 - Colín Santillán Alejandro
 - Hernández Pascua Brandon
 - Nápoles Munguía José de Jesús
+- Sandoval Ramírez Marco Julian
 - Segundo Vargas Josué Armando
 
 ## TODO

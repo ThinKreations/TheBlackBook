@@ -34,14 +34,33 @@
                             <td style="text-align: center;"><span>18/11/25</span></td>
                             <td style="text-align: center;"><span>-</span></td>
                         </tr>
+                        <tr id="prestamo">
+                            <td><span><a id="">Cien Años de Soledad</a></span></td>
+                            <td style="text-align: center;"><span>20/10/25</span></td>
+                            <td style="text-align: center;"><span>20/12/25</span></td>
+                            <td style="text-align: center;"><span>-</span></td>
+                        </tr>
                     </table>
                 </div>
-                <div>
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="month-nav searchIn" style="border-radius:0px; width:100px;" id="prevMonth">◀</button>
+                        <h3 id="monthYear"></h3>
+                        <button class="month-nav searchIn" style="border-radius:0px; width:100px;" id="nextMonth">▶</button>
+                    </div>
+                    <div id="calendar"></div>
 
+                    <div class="calendar-legend">
+                        <div><span class="legend-box prestamo"></span> Día de préstamo</div>
+                        <div><span class="legend-box devolucion"></span> Días de devolución</div>
+                        <div><span class="legend-box multa"></span> Multa</div>
+                        <div><span class="legend-box nada"></span> Nada</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <script src="./js/web-components.js" defer></script>
+    <script src="./js/calendar.js" defer></script>
 </body>
 </html>

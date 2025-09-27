@@ -20,22 +20,23 @@
         <div class="container">
             <div class="searchTop">
                 <div>
-                    <input type="text" placeholder="Libro, Autor, Categoría" class="searchIn">
-                    <button type="button" id="searchBtn"><span> → </span></button>
+                    <input type="text" id="searchInput" placeholder="Libro, Autor, Categoría" class="searchIn">
                 </div>
-                <select class="searchIn" style="border-radius: 0px; width:100px; ">
+                <select class="searchIn" id="orderBy" style="border-radius: 0px; width:100px; ">
                     <option hidden>Ordenar</option>
                     <option>A - Z</option>
                     <option>Z - A</option>
                 </select>
             </div>
             <div class="catalog">
+                <!---
+                Ejemplo de card:
                 <div class="card" id="libro">
                     <div class="portada-wrapper">
                         <img src="https://images.cdn3.buscalibre.com/fit-in/360x360/02/f8/02f854af215ad50b3d5c07105049e04e.jpg" id="portada" class="portada">
                     </div>
                     <div class="data" id="libro-data">
-                        <span style="font-size: 35px;" id="titulo">Misery</span>
+                        <span style="font-size: 20px;" id="titulo">Misery</span>
                         <span id="autor"><b>Stephen King</b></span>
                         <span id="anio">1987</span>
                         <span id="editorial">Doubleday</span>
@@ -48,11 +49,12 @@
                         <div class="labelOculto">Agregar a tu lista</div>
                     </div>
                 </div>
+                Aquí se imprimen dinámicamente con web-components
+                -->
             </div>
         </div>
     </div>
-    <script src="./js/web-components.js" defer></script>
-    <script src="./js/main.js" defer></script>
-    
+    <script src="js/web-components.js" defer></script>
+    <script src="js/main.js" type="module" defer></script>
 </body>
 </html>

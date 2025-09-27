@@ -53,7 +53,7 @@ class appHeader extends HTMLElement{
     super();
     this.innerHTML=`
     <header class="header" style="background-image: linear-gradient(to top, rgba(135,135,135,0.8) 0%, rgba(105,105,105,0.95) 100%) ,url('./src/bg2.jpg');">
-        <a href="/app/"><img src="./src/tbb.png" height="100px"></a>
+        <a href="public/"><img src="./src/tbb.png" height="100px"></a>
         <button class="menu-toggle">☰</button>
     </header>
     `; 
@@ -61,29 +61,31 @@ class appHeader extends HTMLElement{
 }
 customElements.define("app-header",appHeader)
 
-class BookCard extends HTMLElement{
-  constructor(){
+class BookCard extends HTMLElement {
+  constructor() {
     super();
   }
-  connectedCallback(){ // Esto es, en resumen, pa q funcione dinámicamente
+
+  connectedCallback() {
+    const id = this.getAttribute("id") || "libro";
     const titulo = this.getAttribute("titulo") || "Título desconocido";
     const autor = this.getAttribute("autor") || "Autor desconocido";
     const anio = this.getAttribute("anio") || "-";
     const editorial = this.getAttribute("editorial") || "-";
     const categoria = this.getAttribute("categoria") || "-";
-    const portada = this.getAttribute("portada") || "";
+    const portada = this.getAttribute("portada") || titulo;
 
-    this.shadowRoot.innerHTML = `
-      <div class="card">
+    this.innerHTML = `
+      <div class="card" id="${id}">
         <div class="portada-wrapper">
-          <img src="${portada}" class="portada">
+          <img src="${portada}" class="portada" id="portada" alt="${titulo}">
         </div>
-        <div class="data">
-          <span style="font-size: 18px;"><b>${titulo}</b></span>
-          <span>${autor}</span>
-          <span>${anio}</span>
-          <span>${editorial}</span>
-          <span>${categoria}</span>
+        <div class="data" id="libro-data">
+          <span style="font-size: 20px;" id="titulo">${titulo}</span>
+          <span id="autor"><b>${autor}</b></span>
+          <span id="anio">${anio}</span>
+          <span id="editorial">${editorial}</span>
+          <span id="categoria">${categoria}</span>
         </div>
         <div class="libroBtnContainer">
           <button class="libroBtn"><span class="material-icons">add</span></button>
@@ -95,6 +97,7 @@ class BookCard extends HTMLElement{
     `;
   }
 }
+
 customElements.define("book-card", BookCard);
 
 
