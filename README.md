@@ -8,30 +8,23 @@ Este proyecto es presentado por:
 - Sandoval Ramírez Marco Julian
 - Segundo Vargas Josué Armando
 
-## TODO
-- Manual Técnico
-- Manual de Identidad
-- Backlog (Excel)
-- Reporte de proyecto
-- Reporte de evidencia
-- Front y back xd
-
 ## Arquitectura del proyecto
 Este proyecto es un Monolito con REST interno, es decir, todo está en un sólo servidor pero el back ofrece una API para que el front reciba datos dinámicos y actualice la interfaz sin recargar la página.
 
 ## Tecnologías
 - **Python (Vanilla)**: Backend 3.13.7
-    - "http.server": para levantar el servidor y manejar rutas (ESTE YA VIENE INSTALADO)
-    - pyodbc 5.2.0  (pip install en la raíz del proyecto)
-    - python-dotenv 1.1.1
-    - pydantic 2.11.9
-        Con pydantic se instalan:
-        annotated-types   0.7.0
-        pydantic          2.11.9
-        pydantic_core     2.33.2
-        typing_extensions 4.15.0
-        typing-inspection 0.4.1
-    - Luego defino lo demás xd
+PIP:
+- "http.server": para levantar el servidor y manejar rutas (ESTE YA VIENE INSTALADO)
+- pyodbc 5.2.0  (pip install en la raíz del proyecto)
+- python-dotenv 1.1.1
+- pydantic 2.11.9
+    - Con pydantic se instalan:
+    - annotated-types   0.7.0
+    - pydantic          2.11.9
+    - pydantic_core     2.33.2
+    - typing_extensions 4.15.0
+    - typing-inspection 0.4.1
+- Luego defino lo demás xd
 - **HTML, CSS y JS**: Frontend
     - "Web-Components": Componentes modulares reutilziables con JS
     - "Fetch": Realizar peticiones hacia el back
