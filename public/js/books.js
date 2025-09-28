@@ -1,5 +1,11 @@
 export async function getAllBooks(){
     try{
+        const login = localStorage.getItem('login');
+        if (!login) {
+            console.log("xd, no hay login");
+            document.writeln("<h1>Debes iniciar sesión</h1><br/><a href='/'>  < Ir a inicio</a>")
+            return [];
+        }
         const response = await fetch("http://localhost:8080/books");
         if (!response.ok) 
             throw new Error("Error en la respuesta del servidor");
@@ -16,7 +22,6 @@ export function renderBooks(libros){
     if (!catalogo) return;
     catalogo.innerHTML = "";
     libros.forEach(libro => {
-        console.log(libro)
         const card = document.createElement("book-card");
         card.setAttribute("id", libro.id);
         card.setAttribute("titulo", libro.titulo);

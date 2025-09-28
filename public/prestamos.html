@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,20 +42,14 @@
                         </tr>
                     </table>
                 </div>
-                <div class="calendar-container">
-                    <div class="calendar-header">
-                        <button class="month-nav searchIn" style="border-radius:0px; width:100px;" id="prevMonth">◀</button>
-                        <h3 id="monthYear"></h3>
-                        <button class="month-nav searchIn" style="border-radius:0px; width:100px;" id="nextMonth">▶</button>
+                <div class="calendarContainer">
+                    <div class="calendarHeader">
+                        <h3 style="margin: 0; color: var(--vino); flex: 1;">Calendario</h3>
+                        <button id="prevMonth">&lt;</button>
+                        <span id="monthYear"></span>
+                        <button id="nextMonth">&gt;</button>
                     </div>
-                    <div id="calendar"></div>
-
-                    <div class="calendar-legend">
-                        <div><span class="legend-box prestamo"></span> Día de préstamo</div>
-                        <div><span class="legend-box devolucion"></span> Días de devolución</div>
-                        <div><span class="legend-box multa"></span> Multa</div>
-                        <div><span class="legend-box nada"></span> Nada</div>
-                    </div>
+                    <table id="calendar" class="calendar"></table>
                 </div>
             </div>
         </div>
@@ -64,3 +58,5 @@
     <script src="./js/calendar.js" defer></script>
 </body>
 </html>
+
+

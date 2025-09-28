@@ -1,102 +1,92 @@
-.mainContainer {
-    padding-bottom: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+
+.calendar-container {
+  background: #333333;      
+  color: #fff;               
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 350px;
+  margin: auto;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.4);
 }
 
-.container1 {
-    display: flex;
-    gap: 30px;
-    align-items: flex-start;
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.prestamosTable {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: "Spectral SC", serif;
+.month-nav {
+  background-color: #ddd;
+  border: 1px solid #333;
+  color: #800000;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 0px; 
+  width: 100px;      
+  transition: 0.2s;
 }
 
-.prestamosTable th, 
-.prestamosTable td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
+.month-nav:hover {
+  background-color: #bbb;
 }
 
-.prestamosTable th {
-    background-color: var(--vino);
-    color: white;
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
 }
 
-.calendarContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.calendar-day {
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: 4px;
 }
 
-.calendarHeader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-    gap:10px;
+
+.calendar-day.prestamo {
+  background: green;
+  color: #fff;
+}
+.calendar-day.devolucion {
+  background: red;
+  color: #fff;
+}
+.calendar-day.multa {
+  background: yellow;
+  color: #000;
+}
+.calendar-day.nada {
+  background: white;
+  color: #000;
 }
 
-.calendarHeader button {
-    padding: 5px 10px;
-    cursor: pointer;
-    font-weight: bold;
+/* ===== LEYENDA ===== */
+.calendar-legend {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+  font-size: 14px;
 }
 
-#monthYear {
-    font-size: bold;
+.legend-box {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  border: 1px solid #333;
 }
 
-.calendar {
-    border-collapse: collapse;
-    margin-top: 15px;
-    width: 100%;
-    max-width: 400px;
-    background: white;
-    font-family: "Spectral SC", serif;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.calendar th, 
-.calendar td {
-    border: 1px solid #ddd;
-    text-align: center;
-    padding: 10px;
-    width: 14.28%;
-    height: 60px;
-}
-
-.calendar th {
-    background-color: var(--vino);
-    color: white;
-    font-weight: bold;
-}
-
-.calendar td {
-    background-color: white;
-}
-
-.prestamo {
-    background-color: lightgreen;
-}
-
-.devolucion {
-    background-color: lightcoral;
-}
-
-.multa {
-    background-color: khaki;
-}
-
-:root {
-    --fondo: rgb(200,200,200);
-    --vino: rgb(125,50,50);
-}
+.legend-box.prestamo { background: green; }
+.legend-box.devolucion { background: red; }
+.legend-box.multa { background: yellow; }
+.legend-box.nada { background: white; }

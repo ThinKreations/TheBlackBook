@@ -4,39 +4,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevMonthBtn = document.getElementById("prevMonth");
   const nextMonthBtn = document.getElementById("nextMonth");
 
-  const meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio",
-                 "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+  const meses = [
+    "Enero","Febrero","Marzo","Abril","Mayo","Junio",
+    "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
+  ];
 
   let today = new Date();
   let currentMonth = today.getMonth();
   let currentYear = today.getFullYear();
 
-  function parseDate(str) {
-    if (!str || str === "-") return null;
-    const [day, month, year] = str.split("/");
-    return new Date(2000 + parseInt(year), parseInt(month) - 1, parseInt(day));
-  }
-
-  function getPrestamosFromTable() {
-    const rows = document.querySelectorAll(".prestamosTable tr#prestamo");
-    let data = [];
-    rows.forEach(row => {
-      const cols = row.querySelectorAll("td span");
-      let fPrestamo = parseDate(cols[1].textContent.trim());
-      let fLimite = parseDate(cols[2].textContent.trim());
-      let fEntrega = parseDate(cols[3].textContent.trim());
-      data.push({ fPrestamo, fLimite, fEntrega });
-    });
-    return data;
-  }
+  const prestamos = [
+    {
+      libro: "Misery",
+      fPrestamo: new Date(2025, 8, 18),  
+      fLimite: new Date(2025, 10, 18),   
+      fEntrega: null                    
+    },
+    {
+      libro: "Cien Años de Soledad",
+      fPrestamo: new Date(2025, 9, 20), 
+      fLimite: new Date(2025, 11, 20),   
+      fEntrega: null
+    }
+  ];
 
   function renderCalendar(month, year) {
-    const prestamos = getPrestamosFromTable();
-
-    calendar.innerHTML = ""; 
+    calendar.innerHTML = "";
     monthYear.textContent = `${meses[month]} ${year}`;
 
     const firstDay = new Date(year, month, 1).getDay(); 
+
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
     for (let i = 0; i < (firstDay === 0 ? 6 : firstDay - 1); i++) {
@@ -45,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
       calendar.appendChild(emptyCell);
     }
 
+
     for (let d = 1; d <= daysInMonth; d++) {
       const date = new Date(year, month, d);
       const cell = document.createElement("div");
@@ -52,10 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
       cell.classList.add("calendar-day");
 
       prestamos.forEach(p => {
-        if (p.fPrestamo && sameDate(date, p.fPrestamo)) {
+        if (sameDate(date, p.fPrestamo)) {
           cell.classList.add("prestamo");
         }
-        if (p.fLimite && sameDate(date, p.fLimite)) {
+        if (sameDate(date, p.fLimite)) {
           cell.classList.add("devolucion");
         }
         if (p.fLimite && date > p.fLimite && !p.fEntrega) {
@@ -96,6 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCalendar(currentMonth, currentYear);
   });
 
+
   renderCalendar(currentMonth, currentYear);
 });
-

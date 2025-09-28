@@ -18,11 +18,11 @@ class IndexHeader extends HTMLElement {
 }
 customElements.define("index-header", IndexHeader);
 
-class appMenu extends HTMLElement{
-  constructor(){
+class appMenu extends HTMLElement {
+  constructor() {
     super();
-    const title=this.getAttribute('title');
-    this.innerHTML=`
+    const title = this.getAttribute('title');
+    this.innerHTML = `
       <div class="menu">
           <div class="menu-btnr">
               <a href="buscador.html">- Inicio -</a>
@@ -33,20 +33,41 @@ class appMenu extends HTMLElement{
           <div class="menu-btnr">
               <a>Privacidad</a>
               <a>Contacto</a>
-              <a style="color: var(--vino);" href="index.html">Cerrar sesión</a>
+              <a style="color: var(--vino);" href="index.html" id="logoutBtn">Cerrar sesión</a>
           </div>
       </div>
-  `;
-  const site = window.location.pathname;
-  this.querySelectorAll("a[href]").forEach(a=>{
-    if (a.getAttribute("href")===site){
-      a.classList.add("active");
+    `;
+
+    const site = window.location.pathname;
+    this.querySelectorAll("a[href]").forEach(a => {
+      if (a.getAttribute("href") === site) {
+        a.classList.add("active");
+      }
+    });
+  }
+
+  connectedCallback() {
+    const logoutBtn = this.querySelector("#logoutBtn");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+          localStorage.clear()
+        try {
+          await fetch("http://localhost:8080/logout", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({})
+          });
+          window.location.href = "index.html";
+        } catch (error) {
+          console.error("Error al cerrar sesión:", error);
+          alert("Ocurrió un error al cerrar sesión.");
+        }
+      });
     }
-  })
   }
 }
 customElements.define("app-menu", appMenu);
-
 
 class appHeader extends HTMLElement{
   constructor(){
