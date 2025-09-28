@@ -41,10 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
             
             if (!response.ok) throw new Error("Error en el envío");
             
-            alert("Correo enviado a ", correo, ". No olvides revisar SPAM")
+            alert("Correo enviado, no olvides revisar SPAM")
             const result = await response.json();
             console.log(result);
             form.reset();
+            window.location.href("index.html")
         } catch (error) {
             console.error(error);
             alert("Ocurrió un error al registrar. Intenta nuevamente.");

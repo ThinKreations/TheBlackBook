@@ -47,7 +47,9 @@ def send_email(to_email, password, login_name):
         Saludos,
         Equipo The Black Book
         
-        NO RESPONDER A ESTE MENSAJE.
+        Si tú no realizaste el registro, no te preocupes. Sin esta clave no podrán acceder a ningún sitio.
+        
+        NO RESPONDAS A ESTE MENSAJE. Si necesitas más información, envía uno nuevo, gracias.
         """
 
     msg = MIMEMultipart()
