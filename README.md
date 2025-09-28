@@ -12,7 +12,7 @@ Este proyecto es presentado por:
 Clona el repositorio, una vez instaladas las tecnologías mencionadas más abajo, deberás ejecutar los siguientes comandos en una terminal cada uno:
 `python server.py` en la **raíz del proyecto**
 `python -m http.server 3000` en la carpeta **public/**
-Podrás acceder a la web en el http:/localhost:3000/ y el back se ejecutará en el /8080
+Podrás acceder a la web en el http:/localhost:3000/ y el back se ejecutará en el 8080/
 
 ## Arquitectura del proyecto
 Este proyecto es un Monolito con REST interno, es decir, todo está en un sólo servidor pero el back ofrece una API para que el front reciba datos dinámicos y actualice la interfaz sin recargar la página.
@@ -37,9 +37,13 @@ Este proyecto es un Monolito con REST interno, es decir, todo está en un sólo 
 - **SQL Server**: Database
     ODBC Driver 17 for SQL Server
 
-    ## ES NECESARIO ARMAR MANUALMENTE UN ARCHIVO .env EN LA RAÍZ DEL PROYECTO CON LO SIGUIENTE:
-    SERVER=localhost\SQLEXPRESS (O COMO ACCEDAN A SQL SERVER MANAGEMENT STUDIO)
-    NAME=Libreria
-    DRIVER={ODBC Driver 17 for SQL Server} O EL DRIVER QUE TENGAN
-    MAILPASS=ESTA LA PASAMOS POR MENSAJE
+## ES NECESARIO ARMAR MANUALMENTE UN ARCHIVO .env EN LA RAÍZ DEL PROYECTO CON LO SIGUIENTE:
+SERVER=localhost\SQLEXPRESS (O COMO ACCEDAN A SQL SERVER MANAGEMENT STUDIO)
+
+NAME=Libreria
+
+DRIVER={ODBC Driver 17 for SQL Server} O EL DRIVER QUE TENGAN
+
+MAILPASS=ESTA LA PASAMOS POR MENSAJE
+
 
