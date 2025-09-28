@@ -13,23 +13,23 @@ Este proyecto es un Monolito con REST interno, es decir, todo está en un sólo 
 
 ## Tecnologías
 - **Python (Vanilla)**: Backend 3.13.7
-PIP:
-- "http.server": para levantar el servidor y manejar rutas (ESTE YA VIENE INSTALADO)
-- pyodbc 5.2.0  (pip install en la raíz del proyecto)
-- python-dotenv 1.1.1
-- pydantic 2.11.9
-    - Con pydantic se instalan:
-    - annotated-types   0.7.0
-    - pydantic          2.11.9
-    - pydantic_core     2.33.2
-    - typing_extensions 4.15.0
-    - typing-inspection 0.4.1
-- Luego defino lo demás xd
-- **HTML, CSS y JS**: Frontend
-    - "Web-Components": Componentes modulares reutilziables con JS
-    - "Fetch": Realizar peticiones hacia el back
-- **SQL Server**: Database
-    ODBC Driver 17 for SQL Server
+    PIP:
+    - "http.server": para levantar el servidor y manejar rutas (ESTE YA VIENE INSTALADO)
+    - pyodbc 5.2.0  (pip install en la raíz del proyecto)
+    - python-dotenv 1.1.1
+    - pydantic 2.11.9
+        - Con pydantic se instalan:
+        - annotated-types   0.7.0
+        - pydantic          2.11.9
+        - pydantic_core     2.33.2
+        - typing_extensions 4.15.0
+        - typing-inspection 0.4.1
+    - Luego defino lo demás xd
+    - **HTML, CSS y JS**: Frontend
+        - "Web-Components": Componentes modulares reutilziables con JS
+        - "Fetch": Realizar peticiones hacia el back
+    - **SQL Server**: Database
+        ODBC Driver 17 for SQL Server
 
     ## ES NECESARIO ARMAR MANUALMENTE UN ARCHIVO .env EN LA RAÍZ DEL PROYECTO CON LO SIGUIENTE:
     SERVER=localhost\SQLEXPRESS (O COMO ACCEDAN A SQL SERVER MANAGEMENT STUDIO)
