@@ -25,11 +25,11 @@ Este proyecto es un Monolito con REST interno, es decir, todo está en un sólo 
         - typing_extensions 4.15.0
         - typing-inspection 0.4.1
     - Luego defino lo demás xd
-    - **HTML, CSS y JS**: Frontend
-        - "Web-Components": Componentes modulares reutilziables con JS
-        - "Fetch": Realizar peticiones hacia el back
-    - **SQL Server**: Database
-        ODBC Driver 17 for SQL Server
+- **HTML, CSS y JS**: Frontend
+    - "Web-Components": Componentes modulares reutilziables con JS
+    - "Fetch": Realizar peticiones hacia el back
+- **SQL Server**: Database
+    ODBC Driver 17 for SQL Server
 
     ## ES NECESARIO ARMAR MANUALMENTE UN ARCHIVO .env EN LA RAÍZ DEL PROYECTO CON LO SIGUIENTE:
     SERVER=localhost\SQLEXPRESS (O COMO ACCEDAN A SQL SERVER MANAGEMENT STUDIO)
