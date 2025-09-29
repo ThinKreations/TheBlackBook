@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const result = await response.json();
             console.log(result);
             form.reset();
-            window.location.href("index.html")
         } catch (error) {
             console.error(error);
             alert("Ocurrió un error al registrar. Intenta nuevamente.");

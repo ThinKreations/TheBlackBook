@@ -9,12 +9,11 @@ class LoginReq(BaseModel):
 
 def login(data):
     try:
-        # Validar datos de entrada
+
         user_req = LoginReq(**data)
     except ValidationError as e:
         return {"status": "error", "msg": e.errors()}
 
-    # Extraer la parte del correo antes del @ y reemplazar . por _
     match_local = re.match(r"^([A-Za-z0-9._%+-]+)", user_req.correo)
     if not match_local:
         return {"status": "error", "msg": "Correo inválido"}
@@ -22,7 +21,6 @@ def login(data):
     login_name = match_local.group(1).replace(".", "_")
     password = user_req.password
 
-    # Intentar conectarse con las credenciales del usuario
     conn = getUserConnection(login_name, password)
     if not conn:
         return {"status": "error", "msg": "Usuario o contraseña incorrectos"}

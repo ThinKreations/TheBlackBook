@@ -1,8 +1,25 @@
 import {getAllBooks, renderBooks, filterBooks} from "./books.js";
 
-document.addEventListener("DOMContentLoaded", async ()=>{
-    const libros = await getAllBooks();
 
+function checkLogin() {
+    const login = localStorage.getItem("login");
+    if (!login) {
+        console.log("xd, no hay login");
+        document.body.innerHTML = `
+            <h1>Debes iniciar sesión</h1>
+            <br/>
+            <a href="/"> &lt; Ir a inicio</a>
+        `;
+        return false; // corta el flujo
+    }
+    return true;
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+    if (!checkLogin()) return; // si no hay login, ya no sigue
+
+    const libros = await getAllBooks();
+    
     function eliminarDuplicados(lista) {
         return Array.from(
             new Set(lista.map(libro => libro.id ||

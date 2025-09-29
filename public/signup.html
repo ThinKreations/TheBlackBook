@@ -18,31 +18,34 @@
         <form class="formLogin" id="formRegistro">
             <h2 style="margin:0">Únete a Black Book, la biblioteca del futuro.</h2>
             <div class="innerForm">
-                <input class="inputLogin" id="nombre" type="text" placeholder="Nombre(s)" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}">
-                <input class="inputLogin" id="apellidoP" type="text" placeholder="Ap. Paterno" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}">
+                <input class="inputLogin" id="nombre" type="text" placeholder="Nombre(s)*" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}">
+                <input class="inputLogin" id="apellidoP" type="text" placeholder="Ap. Paterno*" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}">
                 <input class="inputLogin" id="apellidoM" type="text" placeholder="Ap. Materno (Opc.)" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}">
             </div>
             <div class="innerForm">
                 <input class="inputLogin" id="correo" type="email" placeholder="Correo Electrónico*" required>
-                <input class="inputLogin" id="celular" type="tel" placeholder="Celular (10 dígitos)" required pattern="[0-9]{10}">
+                <input class="inputLogin" id="celular" type="tel" placeholder="Celular (10 dígitos)" pattern="[0-9]{10}">
             </div>
             <div class="innerForm">
-                <input class="inputLogin" id="calle" type="text" placeholder="Calle" required>
-                <input class="inputLogin" id="num_ext" type="text" placeholder="# Exterior" pattern="[0-9]+" required>
+                <input class="inputLogin" id="calle" type="text" placeholder="Calle">
+                <input class="inputLogin" id="num_ext" type="text" placeholder="# Exterior" pattern="[0-9]+">
             </div>
             <div class="innerForm">
-                <input class="inputLogin" id="colonia" type="text" placeholder="Colonia" required>
-                <input class="inputLogin" id="alcaldia" type="text" placeholder="Alcaldía" required>
+                <input class="inputLogin" id="colonia" type="text" placeholder="Colonia">
+                <input class="inputLogin" id="alcaldia" type="text" placeholder="Alcaldía">
             </div>
             <div class="innerForm">
-                <input class="inputLogin" id="cp" type="text" placeholder="C.P." pattern="[0-9]{5}" required>
+                <input class="inputLogin" id="cp" type="text" placeholder="C.P." pattern="[0-9]{5}" >
                 <select class="inputLogin" id="sexo">
                     <option value="">Selecciona sexo</option>
                     <option value="m">Masculino</option>
                     <option value="f">Femenino</option>
                 </select>
             </div>
-            <span>Datos Obligatorios</span>
+            <span>* Obligatorios</span>
+            <a href="condiciones.html" target="_blank">
+            <span>Términos y condiciones.</span>
+            </a>
             <center>
                 <button type="submit" class="logButton">Registrar</button>
                 <a href="index.html"><p>< Volver</p></a>
