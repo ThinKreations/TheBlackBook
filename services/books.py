@@ -7,7 +7,7 @@ def get_all_books():
         return json.dumps([])
     
     cursor = conn.cursor()
-    cursor.execute("SELECT L.Id_Libro, L.Titulo, ISNULL(A.Nombre_autor, '') + ' ' + ISNULL(A.Apellido_autor, '') AS NombreAutor, L.Año_Publicacion, E.Nombre_editorial, L.Nom_Categoria, L.Portada FROM Libros L JOIN LibrosVSAutores LA ON L.Id_Libro = LA.Id_Libro JOIN Autores A ON LA.Autor = A.Autor JOIN Editoriales E ON L.Numero_Editorial = E.Numero_Editorial;")
+    cursor.execute("SELECT L.Id_Libro, L.Titulo, ISNULL(A.Nombre_autor, '') + ' ' + ISNULL(A.Apellido_autor, '') AS NombreAutor, L.Anio_Publicacion, E.Nombre_editorial, L.Nom_Categoria, L.Portada FROM Libros L JOIN LibrosVSAutores LA ON L.Id_Libro = LA.Id_Libro JOIN Autores A ON LA.Autor = A.Autor JOIN Editoriales E ON L.Numero_Editorial = E.Numero_Editorial;")
     librosRegistrados = cursor.fetchall()
     cursor.close()
     conn.close()

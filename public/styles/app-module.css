@@ -193,11 +193,30 @@
 .prestamosContainer{
     border-right: 1px solid rgb(120,120,120);
     height: 75vh;
+    overflow-y: scroll;
 }
+.prestamosContainer::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+.prestamosContainer::-webkit-scrollbar:vertical {
+    width:10px;
+}
+.prestamosContainer::-webkit-scrollbar-button:increment,.container::-webkit-scrollbar-button {
+    display: none;
+} 
+.prestamosContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(50, 50, 50, 0.4);
+    border: 2px solid rgb(165,165,165);
+}
+.prestamosContainer::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
 .prestamosTable{
     font-family: consolas, Arial, Helvetica, sans-serif;
     width: 50vw;
     border-collapse: collapse;
+
 }
 .prestamosTable th{
     font-family: Consolas;
@@ -272,6 +291,13 @@
     }
     .data{
         width: 57%;
+    }
+    .prestamosContainer{
+        width: 90vw;
+    }
+    .container1{
+        display: flex;
+        flex-direction: column;
     }
 }
 

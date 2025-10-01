@@ -1,13 +1,13 @@
-//Chavos, aquí estoy manejando "Web components", básicamente son componentes personalizados reutilizables en las demás páginas
-// de modo que, en lugar de poner todo el HTML, sólo jalan el script y ponen las etiquetas HTML personalizadas
+// web-components.js
+import { solicitarPrestamo } from "./prestamos.js";
 
-let isLogged = "true"; 
+let isLogged = "true";
 
 class IndexHeader extends HTMLElement {
-  constructor(){
+  constructor() {
     super();
     const src = this.getAttribute('src');
-    const height=this.getAttribute('height')
+    const height = this.getAttribute('height');
     const link = this.getAttribute('link') || '';
     this.innerHTML = `
       <header class="header">
@@ -18,21 +18,19 @@ class IndexHeader extends HTMLElement {
 }
 customElements.define("index-header", IndexHeader);
 
-class appMenu extends HTMLElement {
+class AppMenu extends HTMLElement {
   constructor() {
     super();
-    const title = this.getAttribute('title');
     this.innerHTML = `
       <div class="menu">
           <div class="menu-btnr">
               <a href="buscador.html">- Inicio -</a>
               <a href="prestamos.html">- Prestamos -</a>
               <a href="multas.html">- Multas -</a>
-              <a href="wishlist.html">- Deseos -</a>
+              <a href="wishlist.html">- Favoritos -</a>
           </div>
           <div class="menu-btnr">
-              <a>Privacidad</a>
-              <a>Contacto</a>
+              <a href="contacto.html">Contacto</a>
               <a style="color: var(--vino);" href="index.html" id="logoutBtn">Cerrar sesión</a>
           </div>
       </div>
@@ -51,7 +49,7 @@ class appMenu extends HTMLElement {
     if (logoutBtn) {
       logoutBtn.addEventListener("click", async (e) => {
         e.preventDefault();
-          localStorage.clear()
+        localStorage.clear();
         try {
           await fetch("http://localhost:8080/logout", {
             method: "POST",
@@ -67,20 +65,20 @@ class appMenu extends HTMLElement {
     }
   }
 }
-customElements.define("app-menu", appMenu);
+customElements.define("app-menu", AppMenu);
 
-class appHeader extends HTMLElement{
-  constructor(){
+class AppHeader extends HTMLElement {
+  constructor() {
     super();
-    this.innerHTML=`
-    <header class="header" style="background-image: linear-gradient(to top, rgba(135,135,135,0.8) 0%, rgba(105,105,105,0.95) 100%) ,url('./src/bg2.jpg');">
-        <a href="public/"><img src="./src/tbb.png" height="100px"></a>
-        <button class="menu-toggle">☰</button>
-    </header>
-    `; 
+    this.innerHTML = `
+      <header class="header" style="background-image: linear-gradient(to top, rgba(135,135,135,0.8) 0%, rgba(105,105,105,0.95) 100%) ,url('./src/bg2.jpg');">
+          <a href="public/"><img src="./src/tbb.png" height="100px"></a>
+          <button class="menu-toggle">☰</button>
+      </header>
+    `;
   }
 }
-customElements.define("app-header",appHeader)
+customElements.define("app-header", AppHeader);
 
 class BookCard extends HTMLElement {
   constructor() {
@@ -88,7 +86,7 @@ class BookCard extends HTMLElement {
   }
 
   connectedCallback() {
-    const id = this.getAttribute("id") || "libro";
+    const id = this.getAttribute("id_libro") || "libro";
     const titulo = this.getAttribute("titulo") || "Título desconocido";
     const autor = this.getAttribute("autor") || "Autor desconocido";
     const anio = this.getAttribute("anio") || "-";
@@ -109,24 +107,44 @@ class BookCard extends HTMLElement {
           <span id="categoria">${categoria}</span>
         </div>
         <div class="libroBtnContainer">
-          <button class="libroBtn"><span class="material-icons">add</span></button>
+          <button class="libroBtn addBtn"><span class="material-icons">add</span></button>
           <div class="labelOculto">Solicitar Préstamo</div>
-          <button class="libroBtn"><span class="material-icons">list</span></button>
+          <button class="libroBtn wishlistBtn"><span class="material-icons">list</span></button>
           <div class="labelOculto">Agregar a tu lista</div>
         </div>
       </div>
     `;
+
+    const addBtn = this.querySelector(".addBtn");
+    if (addBtn) {
+      addBtn.addEventListener("click", () => {
+        solicitarPrestamo(id);
+      });
+    }
+
+    const wishlistBtn = this.querySelector(".wishlistBtn");
+    if (wishlistBtn) {
+      wishlistBtn.addEventListener("click", () => {
+        const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+        if (!wishlist.includes(id)) {
+          wishlist.push(id);
+          localStorage.setItem("wishlist", JSON.stringify(wishlist));
+          alert(`Libro "${titulo}" agregado a tu lista`);
+        } else {
+          alert(`El libro "${titulo}" ya está en tu lista`);
+        }
+      });
+    }
   }
 }
 
 customElements.define("book-card", BookCard);
 
-
-document.addEventListener("DOMContentLoaded", ()=>{
+document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.querySelector(".menu-toggle");
   const menu = document.querySelector("app-menu .menu");
-  if (toggleBtn && menu){
-    toggleBtn.addEventListener("click", (e)=>{
+  if (toggleBtn && menu) {
+    toggleBtn.addEventListener("click", (e) => {
       e.preventDefault();
       menu.classList.toggle("show");
     });

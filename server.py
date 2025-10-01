@@ -3,6 +3,8 @@ from services.books import *
 from services.signup import *
 from services.login import *
 from services.logout import *
+from services.prestamos import *
+from services.multas import *
 import json
 
 class Handler(BaseHTTPRequestHandler):
@@ -35,12 +37,30 @@ class Handler(BaseHTTPRequestHandler):
             response = signup(data)
         elif self.path == "/login":
             response = login(data)
+            if response.get("status") == "ok":
+                generar_actualizar_multas()
         elif self.path == "/logout":
             response = logout()
+        elif self.path == "/prestamos":
+            correo = data.get("correo")
+            response = get_prestamos_usuario(correo)
+        elif self.path == "/prestamos/add": 
+            correo = data.get("correo")
+            id_libro = data.get("id_libro")
+            if not correo or not id_libro:
+                response = {"status": "error", "msg": "Falta un correo"}
+            else:
+                response = post_prestamo(correo, id_libro)
+        elif self.path == "/multas":
+            correo = data.get("correo")
+            if not correo:
+                response = {"status": "error", "msg": "Falta correo"}
+            else:
+                response = consultar_multas(correo)
         else:
-            self.send_error(404, "No encontró la dirección")
+            self.send_error(404, "No encontré la dirección :( ")
             return
-
+                
         response_json = json.dumps(response, ensure_ascii=False)
         self.send_response(200)
         self.send_header("Content-Type", "application/json; charset=utf-8")

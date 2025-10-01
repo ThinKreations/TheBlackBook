@@ -28,7 +28,6 @@ class SignUpReq(BaseModel):
     cp: Optional[str] = None                      
     sexo: Optional[str] = None 
     
-    
 def send_email(to_email, password, login_name):
     smtp_server = "smtp.gmail.com"
     smtp_port = 587
@@ -70,7 +69,6 @@ def send_email(to_email, password, login_name):
         print(f"Error enviando correo: {e}")
         return False    
 
-
 def signup(data):
     try:
         # Esto es pa validar xd
@@ -108,7 +106,7 @@ def signup(data):
     usuario = (user_req.nombre[:1] + user_req.apellidoP[:2]).upper().ljust(3, "X")
     sql = """
         INSERT INTO Usuario 
-        (Nombre, ApellidoP, ApellidoM, Email, Dirección_Email, 
+        (Nombre, ApellidoP, ApellidoM, Email, Direccion_Email, 
          Celular, Calle, Num_Ext, Colonia, Alcaldia, CP, Sexo)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """
@@ -131,7 +129,7 @@ def signup(data):
     password = ''.join(random.choice(chars) for _ in range(8))
     login = email.replace(".", "_")
 
-    cursor.execute(f"CREATE LOGIN [{login}] WITH PASSWORD = '{password}';")
+    cursor.execute(f"CREATE LOGIN [{login}] WITH PASSWORD = '{password}', DEFAULT_DATABASE=[Biblioteca];")
     cursor.execute(f"CREATE USER [{login}] FOR LOGIN [{login}];")
     cursor.execute(f"""
         ALTER ROLE db_datareader ADD MEMBER [{login}];

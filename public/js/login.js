@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             if (!response.ok) throw new Error("Error en el envío");
             const result = await response.json();
             if (result.status === "ok"){
+                localStorage.setItem("correo", result.correo);
                 localStorage.setItem("login", result.login);
                 localStorage.setItem("password", result.password);
                 form.reset();

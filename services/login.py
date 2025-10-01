@@ -18,6 +18,9 @@ def login(data):
     if not match_local:
         return {"status": "error", "msg": "Correo inválido"}
     
+    
+    
+    
     login_name = match_local.group(1).replace(".", "_")
     password = user_req.password
 
@@ -27,14 +30,19 @@ def login(data):
 
     try:
         cursor = conn.cursor()
-        cursor.close()
-        conn.close()
+        cursor.execute("SELECT (Email+'@'+Direccion_Email) FROM Usuario;")
+        row = cursor.fetchone()
+        correo = row[0] if row else None
     except Exception as e:
         return {"status": "error", "msg": f"Error al usar la conexión: {str(e)}"}
+    finally:
+        cursor.close()
+        conn.close()
+
     return {
         "status": "ok",
         "msg": f"Usuario {login_name} autenticado correctamente",
         "login": login_name,
-        "password": password
+        "password": password,
+        "correo": correo
     }
-    
