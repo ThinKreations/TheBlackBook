@@ -191,9 +191,9 @@
     justify-content: space-between;
 }
 .prestamosContainer{
-    border-right: 1px solid rgb(120,120,120);
-    height: 75vh;
+    width: 75%;
     overflow-y: scroll;
+    height: 75vh;
 }
 .prestamosContainer::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -212,11 +212,11 @@
     border-radius: 10px;
 }
 
+
 .prestamosTable{
     font-family: consolas, Arial, Helvetica, sans-serif;
-    width: 50vw;
     border-collapse: collapse;
-
+    width: 100%;
 }
 .prestamosTable th{
     font-family: Consolas;

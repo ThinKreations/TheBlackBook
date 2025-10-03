@@ -40,7 +40,7 @@ export async function solicitarPrestamo(id_libro) {
     }
 }
 
-export async function getPrestamosUsuario(correo) {
+export async function getPrestamosUsuario(correo){
     if (!correo) return [];
     try {
         const response = await fetch("http://localhost:8080/prestamos", {
@@ -59,20 +59,22 @@ export async function getPrestamosUsuario(correo) {
     }
 }
 
-export function renderPrestamos(prestamos) {
-    const tabla = document.querySelector(".prestamosTable");
+export function renderPrestamos(prestamos){
+    const tabla = document.getElementById("prestamosTable");
     if (!tabla) return;
 
     tabla.innerHTML = `
         <tr>
-            <th style="width: 40%;">Libro</th>
-            <th>F. Préstamo</th>
+            <th style="color:gray">ID</th>
+            <th style="width: 30%;">Libro</th>
+            <th>F. Prestamo</th>
             <th>F. Límite</th>
             <th>F. Entrega</th>
+            <th>Multa</th>
         </tr>
     `;
 
-    if (!prestamos.length) {
+    if (!prestamos.length){
         const row = document.createElement("tr");
         row.innerHTML = `<td colspan="4" style="text-align:center;">No hay préstamos</td>`;
         tabla.appendChild(row);
@@ -81,12 +83,26 @@ export function renderPrestamos(prestamos) {
     console.log(prestamos)
     prestamos.forEach(p => {
         const row = document.createElement("tr");
-        row.innerHTML = `
+        if(p.multa===null){
+            row.innerHTML = `
+                <td style="text-align: center; color:gray;">${p.id_prestamo}</td>
+                <td>${p.titulo}</td>
+                <td style="text-align: center;">${p.fecha_prestamo}</td>
+                <td style="text-align: center;">${p.fecha_lim_dev}</td>
+                <td style="text-align: center;">${p.fecha_devolucion ?? "-"}</td>
+                <td style="text-align: center;"></td>
+            `;
+        }else{
+            row.innerHTML = `
+            <td style="text-align: center; color:gray;">${p.id_prestamo}</td>
             <td>${p.titulo}</td>
             <td style="text-align: center;">${p.fecha_prestamo}</td>
             <td style="text-align: center;">${p.fecha_lim_dev}</td>
             <td style="text-align: center;">${p.fecha_devolucion ?? "-"}</td>
+            <td style="text-align: center;"><a href="multas.html" style="text-decoration: underline; color: var(--vino)">${ p.multa }</a></td>
         `;
+        }
+        
         tabla.appendChild(row);
     });
 }

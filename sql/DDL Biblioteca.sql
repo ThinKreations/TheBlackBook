@@ -77,6 +77,7 @@ CREATE TABLE [dbo].[Multas](
 	[Valor_base_multa] INT NULL,
 	[Monto_actual_multa] INT NULL,
 	[Fecha_emision_multa] [date] NULL,
+	[Fecha_pago] [date] NULL,
 	[estatus] [int]
 PRIMARY KEY CLUSTERED 
 (

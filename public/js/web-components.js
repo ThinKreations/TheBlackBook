@@ -1,5 +1,5 @@
-// web-components.js
 import { solicitarPrestamo } from "./prestamos.js";
+import { toggleWishlist } from "./wishlist.js";
 
 let isLogged = "true";
 
@@ -30,7 +30,7 @@ class AppMenu extends HTMLElement {
               <a href="wishlist.html">- Favoritos -</a>
           </div>
           <div class="menu-btnr">
-              <a href="contacto.html">Contacto</a>
+              <a href="cambiarcontrasenia.html">Contraseña</a>
               <a style="color: var(--vino);" href="index.html" id="logoutBtn">Cerrar sesión</a>
           </div>
       </div>
@@ -80,12 +80,11 @@ class AppHeader extends HTMLElement {
 }
 customElements.define("app-header", AppHeader);
 
-class BookCard extends HTMLElement {
+class BookCard extends HTMLElement{
   constructor() {
     super();
   }
-
-  connectedCallback() {
+  connectedCallback(){
     const id = this.getAttribute("id_libro") || "libro";
     const titulo = this.getAttribute("titulo") || "Título desconocido";
     const autor = this.getAttribute("autor") || "Autor desconocido";
@@ -117,22 +116,29 @@ class BookCard extends HTMLElement {
 
     const addBtn = this.querySelector(".addBtn");
     if (addBtn) {
-      addBtn.addEventListener("click", () => {
+      addBtn.addEventListener("click", () =>{
         solicitarPrestamo(id);
       });
     }
 
     const wishlistBtn = this.querySelector(".wishlistBtn");
-    if (wishlistBtn) {
-      wishlistBtn.addEventListener("click", () => {
-        const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
-        if (!wishlist.includes(id)) {
-          wishlist.push(id);
-          localStorage.setItem("wishlist", JSON.stringify(wishlist));
-          alert(`Libro "${titulo}" agregado a tu lista`);
-        } else {
-          alert(`El libro "${titulo}" ya está en tu lista`);
+    if (wishlistBtn){
+      wishlistBtn.addEventListener("click", async () => {
+        const correo = localStorage.getItem('correo');
+        if (!correo) {
+            alert("Inicia sesión para usar la wishlist");
+            return;
         }
+
+        const result = await toggleWishlist(correo, id);
+        if (result.status === "added") {
+            alert("Libro agregado a tu lista");
+        } else if (result.status === "removed") {
+            alert("Libro eliminado de tu lista");
+        }
+
+        const libros = await getWishlist(correo);
+        renderWishlist(libros);
       });
     }
   }

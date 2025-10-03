@@ -5,6 +5,7 @@ from services.login import *
 from services.logout import *
 from services.prestamos import *
 from services.multas import *
+from services.wishlist import *
 import json
 
 class Handler(BaseHTTPRequestHandler):
@@ -25,6 +26,21 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Access-Control-Allow-Headers", "Content-Type")
             self.end_headers()
             self.wfile.write(libros_json.encode("utf-8"))
+        
+        elif self.path.startswith("/wishlist") and not self.path.startswith("/wishlist/toggle"):
+            from urllib.parse import urlparse, parse_qs
+            query = parse_qs(urlparse(self.path).query)
+            correo = query.get("correo", [None])[0]
+            if not correo:
+                response = {"status": "error", "msg": "Falta correo", "wishlist": []}
+            else:
+                response = get_wishlist(correo)
+            response_json = json.dumps(response, ensure_ascii=False)
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(response_json.encode("utf-8"))
         else:
             self.send_error(404, "No encontrado")
 
@@ -57,6 +73,13 @@ class Handler(BaseHTTPRequestHandler):
                 response = {"status": "error", "msg": "Falta correo"}
             else:
                 response = consultar_multas(correo)
+        elif self.path == "/wishlist/toggle":
+            try:
+                data = json.loads(body)
+                input_data = PostWishlistInput(**data)
+                response = toggle_wishlist(input_data)
+            except Exception as e:
+                response = {"status": "error", "msg": str(e)}
         else:
             self.send_error(404, "No encontré la dirección :( ")
             return

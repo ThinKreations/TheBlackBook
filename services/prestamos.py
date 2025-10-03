@@ -51,10 +51,8 @@ def get_prestamos_usuario(correo: str):
     except Exception as e:
         return {"status": "error", "msg": f"Error al obtener préstamos: {str(e)}", "prestamos": []}
     finally:
-        if cursor:
-            cursor.close()
-        if conn:
-            conn.close()
+        cursor.close()
+        conn.close()
 
         
 def post_prestamo(correo: str, id_libro: str):

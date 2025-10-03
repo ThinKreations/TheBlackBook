@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 from services.database import getConnection
 
 VALOR_BASE = 200
@@ -50,11 +50,11 @@ def generar_actualizar_multas():
         
         for prestamo in prestamos:
             id_prestamo, fecha_lim, multa_id = prestamo
-            print(f"[DEBUG] Procesando préstamo {id_prestamo}, multa_id={multa_id}")
+            #print(f"[DEBUG] Procesando préstamo {id_prestamo}, multa_id={multa_id}")
 
             monto = calcular_multa(fecha_lim)
             if monto == 0:
-                print(f"[DEBUG] Préstamo {id_prestamo} aún no supera la fecha límite. No se genera multa.")
+                #print(f"[DEBUG] Préstamo {id_prestamo} aún no supera la fecha límite. No se genera multa.")
                 continue
             
             if multa_id is not None and multa_id != 0:
@@ -124,21 +124,28 @@ def consultar_multas(correo: str):
         """, (email, direccion_email))
         usuario = cursor.fetchone()
         if not usuario:
-            return {"status": "error", "msg": "Usuario no encontrado", "multas": []}
+            return {"status": "error", "msg": "Usuario no encontrado", "prestamos": []}
         usuario_id = usuario[0]
 
         cursor.execute("""
-            SELECT m.Multa, m.Valor_base_multa, m.Monto_actual_multa, m.Fecha_emision_multa, m.Estatus
+            SELECT m.Multa, m.Valor_base_multa, m.Monto_actual_multa, 
+                   m.Fecha_emision_multa, m.Fecha_pago, m.Estatus
             FROM Multas m
             INNER JOIN Prestamos p ON m.Multa = p.Multa
             WHERE p.Usuario = ?
         """, (usuario_id,))
 
         multas = cursor.fetchall()
-        multas_list = [
-            dict(zip([column[0] for column in cursor.description], row))
-            for row in multas
-        ]
+        columns = [col[0] for col in cursor.description]
+        print(f"Multas: {multas}")
+        multas_list = []
+        for row in multas:
+            item = dict(zip(columns, row))
+            for campo in ["Fecha_emision_multa", "Fecha_pago"]:
+                if isinstance(item.get(campo), (date, datetime)):
+                    item[campo] = item[campo].strftime("%Y-%m-%d")
+            multas_list.append(item)
+
         return {"status": "ok", "multas": multas_list}
 
     except Exception as e:

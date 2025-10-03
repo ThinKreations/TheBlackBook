@@ -7,6 +7,7 @@
     <link href="./styles/main.css" rel="stylesheet">
     <link href="./styles/home-module.css" rel="stylesheet">
     <link href="./styles/app-module.css" rel="stylesheet">
+    <link href="./styles/calendar.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -14,39 +15,39 @@
     <title>Prestamos</title>
 </head>
 <body>
-    <app-header></app-header>
-    <div class="mainContainer" style="padding-bottom: 0px;">
+  <app-header></app-header>
+    <div class="mainContainer" style="padding-bottom: 0px;"> 
         <app-menu></app-menu>
         <div class="container">
-            <div class="container1">
+            <div class="container1" style="padding-bottom:0px">
                 <div class="prestamosContainer">
-                    <h3 style="margin-top: 0px; color: var(--vino)">Tus prestamos</h3>
-                    <table class="prestamosTable">
-                        <tr>
-                            <th style="width: 40%;">Libro</th>
-                            <th>F. Prestamo</th>
-                            <th>F. Límite</th>
-                            <th>F. Entrega</th>
-                        </tr>
-                        
-                    </table>
+                    <h3 style="color: var(--vino)">Tus préstamos</h3>
+                    <table class="prestamosTable" id="prestamosTable"></table>
                 </div>
-                <div class="calendarContainer">
-                    <div class="calendarHeader">
-                        <h3 style="margin: 0; color: var(--vino); flex: 1;">Calendario</h3>
+                <div class="calendarWrapper">
+                    <div class="calendarContainer">
+                        <div class="calendarHeader">
                         <button id="prevMonth">&lt;</button>
-                        <span id="monthYear"></span>
+                        <h2 id="monthYear"></h2>
                         <button id="nextMonth">&gt;</button>
+                        </div>
+                        <div class="calendar" id="calendar"></div>
+
+
+                        <div class="calendar-legend">
+                        <div><span class="legend-box prestamo" ></span> Día de préstamo</div>
+                        <div><span class="legend-box devolucion"></span> Límite</div>
+                        <div><span class="legend-box multa"></span> Multa</div>
+                        </div>
                     </div>
-                    <table id="calendar" class="calendar"></table>
                 </div>
             </div>
         </div>
     </div>
     <script src="./js/web-components.js" type="module"  defer></script>
-    <script src="./js/calendar.js" defer></script>
+    <script src="./js/calendar.js" type="module"  defer></script>
     <script src="./js/prestamos.js" type="module" defer></script>
 </body>
 </html>
 
-
+<!----->

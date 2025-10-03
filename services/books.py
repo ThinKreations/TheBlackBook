@@ -24,12 +24,3 @@ def get_all_books():
             "portada": libro[6]
         })
     return json.dumps(bookList, ensure_ascii=False)
-
-def add_to_list():
-    conn=getConnection()
-    if not conn:
-        return json.dumps([])
-    cursor = conn.cursor()
-    cursor.execute("INSERT ALGO")
-    cursor.close()
-    conn.close()
