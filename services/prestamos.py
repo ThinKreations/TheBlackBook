@@ -67,7 +67,6 @@ def post_prestamo(correo: str, id_libro: str):
             return {"status": "error", "msg": "Correo inválido"}
         
         email, direccion_email = correo.split("@", 1)
-        #Esto es para obtener la ID del usuario "Usuario"
         cursor.execute("""
             SELECT Usuario FROM Usuario
             WHERE Email = ? AND Direccion_Email = ?

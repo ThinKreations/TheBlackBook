@@ -30,7 +30,7 @@ class AppMenu extends HTMLElement {
               <a href="wishlist.html">- Favoritos -</a>
           </div>
           <div class="menu-btnr">
-              <a href="cambiarcontrasenia.html">Contraseña</a>
+              <a href="cambiarcontrasena.html">Contraseña</a>
               <a style="color: var(--vino);" href="index.html" id="logoutBtn">Cerrar sesión</a>
           </div>
       </div>
@@ -72,7 +72,7 @@ class AppHeader extends HTMLElement {
     super();
     this.innerHTML = `
       <header class="header" style="background-image: linear-gradient(to top, rgba(135,135,135,0.8) 0%, rgba(105,105,105,0.95) 100%) ,url('./src/bg2.jpg');">
-          <a href="public/"><img src="./src/tbb.png" height="100px"></a>
+          <a href="/"><img src="./src/tbb.png" height="100px"></a>
           <button class="menu-toggle">☰</button>
       </header>
     `;
@@ -133,6 +133,7 @@ class BookCard extends HTMLElement{
         const result = await toggleWishlist(correo, id);
         if (result.status === "added") {
             alert("Libro agregado a tu lista");
+            
         } else if (result.status === "removed") {
             alert("Libro eliminado de tu lista");
         }
