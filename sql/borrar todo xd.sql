@@ -52,8 +52,3 @@ IF OBJECT_ID('dbo.Usuario', 'U') IS NOT NULL DROP TABLE dbo.Usuario;
 IF OBJECT_ID('dbo.Editoriales', 'U') IS NOT NULL DROP TABLE dbo.Editoriales;
 IF OBJECT_ID('dbo.Autores', 'U') IS NOT NULL DROP TABLE dbo.Autores;
 GO
-
---DROP USER napoles_munguia_josedejesus_1
---DROP LOGIN napoles_munguia_josedejesus_1;
-
-SELECT * FROM sys.syslogins
