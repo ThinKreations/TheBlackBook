@@ -9,8 +9,10 @@ def getConnection():
     server = os.getenv("SERVER")
     database = os.getenv("NAME")
     driver = os.getenv("DRIVER")
+    login = os.getenv("UID")
+    password = os.getenv("PASSWORD")
     
-    conn_str = f"DRIVER={driver};SERVER={server};DATABASE={database};Trusted_Connection=yes;"
+    conn_str = f"DRIVER={driver};SERVER={server};DATABASE={database};UID={login};PWD={password}"
     try:
         conn = pyodbc.connect(conn_str)
         print("Conexión exitosa 10/10 y GOD")

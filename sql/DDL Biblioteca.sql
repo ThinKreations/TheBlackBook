@@ -153,12 +153,12 @@ ALTER TABLE [dbo].[LibrosVSAutores]  WITH CHECK ADD FOREIGN KEY([Id_Libro])
 REFERENCES [dbo].[Libros] ([Id_Libro])
 GO
 
-ALTER TABLE [dbo].[Usuario]  WITH CHECK ADD  CONSTRAINT [caracter] CHECK  (([Sexo]='m' OR [Sexo]='f'))
-GO
-ALTER TABLE [dbo].[Usuario] CHECK CONSTRAINT [caracter]
-GO
 
 ALTER TABLE [dbo].[Multas]  WITH CHECK ADD  CONSTRAINT [estado] CHECK  (([estatus]=0 OR [estatus]=1))
 GO
 ALTER TABLE [dbo].[Multas] CHECK CONSTRAINT [estado]
 GO
+
+ALTER TABLE [dbo].[Usuario]  
+WITH CHECK 
+ADD CONSTRAINT [caracter] CHECK ([Sexo]='m' OR [Sexo]='f' OR [Sexo]='');

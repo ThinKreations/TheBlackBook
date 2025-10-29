@@ -1,3 +1,4 @@
+
 -- ESTO ES PA BORRAR TODOS LOS OBJETOS EN CASO DE QUE TIREN SU BD MANUALMENTE (NO CON QUERY, SINO EN DELETE Y CLOSE ALL EXISTING CONNECTIONS)
 IF OBJECT_ID('dbo.wishlist', 'U') IS NOT NULL
 BEGIN
@@ -52,3 +53,7 @@ IF OBJECT_ID('dbo.Usuario', 'U') IS NOT NULL DROP TABLE dbo.Usuario;
 IF OBJECT_ID('dbo.Editoriales', 'U') IS NOT NULL DROP TABLE dbo.Editoriales;
 IF OBJECT_ID('dbo.Autores', 'U') IS NOT NULL DROP TABLE dbo.Autores;
 GO
+
+
+SELECT name, create_date, type_desc
+FROM sys.server_principals
